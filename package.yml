@@ -1,0 +1,24 @@
+name       : nxcomp
+version    : 3.5.0
+release    : 1
+source     :
+    - http://code.x2go.org/releases/source/nx-libs/nxcomp/nxcomp-3.5.0-2.tar.gz : 30a51228509a083b4196e86596a6efb85b2e75e703f5d842158c9a27abb6ebc6
+license    : GPL-2.0
+component  : programming
+summary    : NX X compression library
+description: |
+    nxcomp provides a differential X compression library for X11
+builddeps  :
+    - pkgconfig(libpng)
+    - pkgconfig(x11)
+    - libjpeg-turbo-devel
+setup      : |
+    %apply_patches
+    %configure --disable-static
+build      : |
+    %make
+install    : |
+    mkdir -p $installdir/usr/include/nx
+    mkdir -p $installdir/usr/lib64
+    install -m 755 $workdir/libXcomp.so* $installdir/usr/lib64
+    install -m 644 $workdir/*.h $installdir/usr/include/nx

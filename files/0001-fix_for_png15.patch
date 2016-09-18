@@ -1,0 +1,31 @@
+Index: b/Pgn.cpp
+===================================================================
+--- a/Pgn.cpp	2010-03-01 09:18:59.000000000 -0800
++++ b/Pgn.cpp	2016-09-15 13:41:52.977094617 -0700
+@@ -414,7 +414,7 @@
+ 
+   png_read_info(pngPtr, infoPtr);
+ 
+-  if (infoPtr -> color_type == PNG_COLOR_TYPE_PALETTE)
++  if (png_get_color_type(pngPtr, infoPtr) == PNG_COLOR_TYPE_PALETTE)
+   {
+     png_set_expand(pngPtr);
+   }
+@@ -565,7 +565,7 @@
+ 
+   png_read_info( pngPtr, infoPtr ) ;
+ 
+-  if (infoPtr -> color_type == PNG_COLOR_TYPE_PALETTE)
++  if (png_get_color_type(pngPtr, infoPtr) == PNG_COLOR_TYPE_PALETTE)
+   {
+     png_set_expand(pngPtr);
+   }
+@@ -709,7 +709,7 @@
+   png_read_info(pngPtr, infoPtr) ;
+ 
+ 
+-  if (infoPtr -> color_type == PNG_COLOR_TYPE_PALETTE)
++  if (png_get_color_type(pngPtr, infoPtr) == PNG_COLOR_TYPE_PALETTE)
+   {
+     png_set_expand(pngPtr);
+   }
